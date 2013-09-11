@@ -16,7 +16,12 @@ public class Stocks {
 	 * Stocks = Base Item Value + Demand - Supply
 	 */
 	public static String[] stocks;
-	//Notes: Investor name, Stock invested in, Amount invested
+	
+	/**
+	 * Supply = The amount of the item obtained and the amount of the item in the sign shops collectively at the time of the values update.
+	 * Demand = The amount of the item purchased from the sign shops collectively
+	 */
+	public static int[] supply,demand;
 	
 	@SuppressWarnings("deprecation")
 	public static void updateValues()

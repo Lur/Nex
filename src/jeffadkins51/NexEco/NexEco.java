@@ -1,4 +1,5 @@
 package jeffadkins51;
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -6,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -15,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.material.Chest;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -50,10 +53,27 @@ public class NexEco extends JavaPlugin implements Listener {
 		
 		return result;
 	}
+
+	public static void purchaseItem(Material item)
+	{
+		Stocks.demand[item.getId()]++;
+		//TODO: Method logic
+	}
+	
+	public static void sellItem(Material item)
+	{
+		Stocks.supply[item.getId()]++;
+		//TODO: Method logic
+	}
 	
 	public static void addShopId(String shopId)
 	{
 		
+	}
+	@EventHandler
+	public void onChat(AsyncPlayerChatEvent evt) {
+		//!CMD ARG0 ARG1
+		String[] args = evt.getMessage().split(" ");
 	}
 	
 	@EventHandler
