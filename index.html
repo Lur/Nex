@@ -45,7 +45,7 @@
 </ul><h3>
 <a name="how-it-works" class="anchor" href="#how-it-works"><span class="octicon octicon-link"></span></a>How It Works</h3>
 
-<p>Nex acts as the core for the plugin(s), and has NexSQL built-in so it can do things like adding new entries and deleting entries from the DB. It is also what handles the commands for all of the plugins.</p>
+<p>Nex acts as the core for the plugin(s), and has NexSQL built-in so it can do things like adding new entries and deleting entries from the DB. The other Nex plugins all use Nex for sending queries to the DB, handling commands, etc.</p>
 
 <h3>
 <a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How To Use</h3>
@@ -68,31 +68,32 @@ Ban Command</p>
 <li>Nex.mb | Nex.hr | Nex.dy | Nex.wk
 Log Management</li>
 <li>Nex.xraylogs.view | Nex.xraylogs.clear</li>
-<li>Nex.stafflogs.view | Nex.stafflogs.clear</li>
+<li>Nex.stafflogs.view | Nex.stafflogs.clear
+NexSQL</li>
+<li>Nex.db.new | Nex.db.add | Nex.db.del | Nex.db.wipe</li>
 </ul><h3>
 <a name="nex-commands" class="anchor" href="#nex-commands"><span class="octicon octicon-link"></span></a>Nex Commands</h3>
 
-<p>*!
-!25mb testuser You're banned from the server for 25 minutes because you did not follow the rules.
-!3dy testuser You're banned from the server for 3 days because you did not follow the rules.
-!ban testuser You're permanently banned from the server because you did not follow the rules.
-!xraylogs  - View suspected x-ray users or clear out the x-ray logs from the DB.
-!stafflogs  - View suspected admin abusers or clear out the staff logs from the DB.</p>
+<p>*![bantime][mb|hr|dy|wk] [Player] [reason]
+!25mb testuser You're banned from the server for 25 minutes because you did not follow the rules.<br>
+!3dy testuser You're banned from the server for 3 days because you did not follow the rules.<br>
+!ban testuser You're permanently banned from the server because you did not follow the rules.<br>
+!xraylogs [view|clear] - View suspected x-ray users or clear out the x-ray logs from the DB.<br>
+!stafflogs [view|clear] - View suspected admin abusers or clear out the staff logs from the DB.<br></p>
 
 <h3>
 <a name="nexsql-commands" class="anchor" href="#nexsql-commands"><span class="octicon octicon-link"></span></a>NexSQL Commands</h3>
 
-<p>Note that NexSQL is built-in to the NexCore plugin.</p>
+<p>Note that NexSQL is built-in to the NexCore plugin.
+*!db [wipe] [optional:table] - Wipe's the database or table clean.
+!db wipe testTbl (Would completely clear all rows from the table "testTbl")<br>
+!db wipe (Would completely clear all rows from all tables)
+*!db [new|add|del] [table_name] [args]
+!db new Players id(int),Username(string),Password(string) (Creates a new table "Players")<br>
+!db add Players 1,TestUsr,TestPwd123 (Adds a new row within the table "Players")<br>
+!db del Players Players 1 (Deletes a specific row from "Players" using only the ID specified)<br></p>
 
-<ul>
-<li>!db <a>optional:table</a>- Wipe's the database or table clean.
-!db wipe testTbl (Would completely clear all rows from the table "testTbl")
-!db wipe (Would completely clear all rows from all tables)</li>
-<li>!db 
-!db new Players id(int),Username(string),Password(string) (Creates a new table "Players")
-!db add Players 1,TestUsr,TestPwd123 (Adds a new row within the table "Players")
-!db del Players Players 1 (Deletes a specific row from "Players" using only the ID specified)</li>
-</ul><h3>
+<h3>
 <a name="nexeco-commands" class="anchor" href="#nexeco-commands"><span class="octicon octicon-link"></span></a>NexEco Commands</h3>
 
 <p>Will be added soon.</p>
