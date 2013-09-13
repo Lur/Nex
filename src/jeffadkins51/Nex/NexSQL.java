@@ -1,5 +1,8 @@
 package jeffadkins51;
+
 import java.io.File;
+
+import org.tmatesoft.sqljet.core.SqlJetException;
 import org.tmatesoft.sqljet.core.table.ISqlJetTable;
 import org.tmatesoft.sqljet.core.table.SqlJetDb;
 
@@ -14,8 +17,10 @@ public class NexSQL {
 		if (!(dbFile.exists())) return false; else { return true; }
 	}
 	
-	public static void addPlayerEntry(String args[]){
-		try{
+	
+	
+	public static void addPlayerEntry(String args[]) {
+		try {
 			db = SqlJetDb.open(dbFile , true);
 			table = db.getTable("Players");
 			/**
@@ -29,10 +34,15 @@ public class NexSQL {
 			 * args[7] = Home_Teleports (Separated with ":")
 			 */
 			table.insert(args[0],args[1],args[2],args[3],args[4],args[5],args[6],args[7]);
+		} catch (SqlJetException e) { e.printStackTrace();
 		} finally {
-			db.commit();
-			db.close();
-		}
+			try {
+				db.commit();
+				db.close();
+			} catch (SqlJetException e) {
+				e.printStackTrace();
+			}
+		} 
 	}
 	
 	public static void addShopEntry(String[] args){
@@ -47,6 +57,7 @@ public class NexSQL {
 			 * 
 			 */
 			table.insert(args[0],args[1],args[2],"-1");
+			
 		} finally {
 			db.commit();
 			db.close();
