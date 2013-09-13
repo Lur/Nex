@@ -31,7 +31,7 @@
           <h3>
 <a name="welcome" class="anchor" href="#welcome"><span class="octicon octicon-link"></span></a>Welcome</h3>
 
-<p>Nex is an Administration, Economy / Sign Shops, and Game Mechanics plugin All-In-One. Designed to be modular, you don't need to use every single one of the Nex plugins, you simply download which ones you want and place them in "/Your_Server_Directory/Plugins/Nex/"</p>
+<p>Nex is an Administration, Economy / Sign Shops, and Game Mechanics plugin All-In-One. Disable which features you don't want via the configuration file, e.g if you wanted to disable the NexMechanics you could change the line "NexMechanics_Enabled = true" to "NexMechanics_Enabled = false" in the file "/Plugins/Nex/config.ini"</p>
 
 <h3>
 <a name="downloads" class="anchor" href="#downloads"><span class="octicon octicon-link"></span></a>Downloads</h3>
@@ -45,7 +45,7 @@
 </ul><h3>
 <a name="how-it-works" class="anchor" href="#how-it-works"><span class="octicon octicon-link"></span></a>How It Works</h3>
 
-<p>Nex acts as the core for the plugin(s), and has NexSQL built-in so it can do things like adding new entries and deleting entries from the DB. The other Nex plugins all use Nex for sending queries to the DB, handling commands, etc.</p>
+<p>Nex uses a SQLite database to save player data, shop data, and anything else that might need saved.</p>
 
 <h3>
 <a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How To Use</h3>
@@ -53,8 +53,8 @@
 <p>You aren't required to use all of the Nex plugins, but they work best together. To use any of the Nex plugins you need <a href="#">SQLite</a> since Nex uses an SQLite DB to store all needed data.</p>
 
 <ol>
-<li>Download whichever plugin(s) you want to use and also download the NexCore.</li>
-<li>Place your downloaded plugins and NexSQL into your /Plugins/ folder</li>
+<li>Download the Nex Plugin</li>
+<li>Place the plugin in /Server_Directory/Plugins/</li>
 <li>Run your server and Nex should automatically create a folder within your /Plugins/ folder, open it and edit the NexCore configuration file and the configuration file for whichever plugin(s) you downloaded.</li>
 <li>Place the "server.db" file in /Plugins/Nex/ so it looks like "/Your_Server_Directory/Plugins/Nex/server.db"
 Your server should now be running successfully with Nex. To view and change data like sign shops, edit the "server.db" file.</li>
@@ -84,8 +84,6 @@ NexSQL</li>
 </li>
 </ul><h3>
 <a name="nexsql-commands" class="anchor" href="#nexsql-commands"><span class="octicon octicon-link"></span></a>NexSQL Commands</h3>
-
-<p>Note that NexSQL is built-in to the NexCore plugin.</p>
 
 <ul>
 <li>!db [wipe] [optional:table] - Wipe's the database or table clean.
