@@ -37,22 +37,39 @@
 <a name="downloads" class="anchor" href="#downloads"><span class="octicon octicon-link"></span></a>Downloads</h3>
 
 <ul>
-<li>Latest version of <a href="#">Nex Pack</a> (Nex and all of its associated plugins)</li>
+<li>You can download the Nex Package which contains all of the Nex plugins by clicking "Download .zip file" or "Download .tar.gz file" on the right</li>
 <li>Latest version of <a href="#">Nex</a> (Nex without any of its associated plugins)</li>
 <li>
-<a href="#">SQLite</a> and <a href="#">SQLite Browser</a> for viewing and editing the DB file.</li>
+<a href="#">SQLite</a> and optionally <a href="#">SQLite Browser</a> for viewing and editing the DB file.</li>
 </ul><h3>
 <a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How To Use</h3>
 
-<p>You aren't required to use all of the Nex plugins, but they work best together. To use any of the Nex plugins you need <a href="#">SQLite</a> since Nex uses an SQLite DB to store all needed DB and you'll need the <a href="https://github.com/Lur/Nex/tree/master/src/jeffadkins51/NexSQL">NexSQL</a> plugin for any Nex plugin you use.</p>
+<p>You aren't required to use all of the Nex plugins, but they work best together. To use any of the Nex plugins you need <a href="#">SQLite</a> since Nex uses an SQLite DB to store all needed data.</p>
 
 <ol>
-<li>Download whichever Nex plugins you want to use.</li>
-<li>Place them in your MC server's /Plugins/ folder</li>
+<li>Download whichever Nex plugins you want to use, and you'll also need to download NexSQL to handle the SQLite db.</li>
+<li>Place your downloaded plugins and NexSQL into your /Plugins/ folder</li>
 <li>Run your server and Nex should automatically create a folder within your /Plugins/ folder, open it and edit the configuration file.</li>
-<li>Place the "server.db" file in /Plugins/Nex/ so it looks like /Your_Server_Directory/Plugins/Nex/server.db
+<li>Place the "server.db" file in /Plugins/Nex/ so it looks like "/Your_Server_Directory/Plugins/Nex/server.db"
 Your server should now be running successfully with Nex. To view and change data like sign shops, edit the "server.db" file.</li>
-</ol>
+</ol><h3>
+<a name="nex-commands" class="anchor" href="#nex-commands"><span class="octicon octicon-link"></span></a>Nex Commands</h3>
+
+<h3>
+<a name="nexeco-commands" class="anchor" href="#nexeco-commands"><span class="octicon octicon-link"></span></a>NexEco Commands</h3>
+
+<h3>
+<a name="nexsql-commands" class="anchor" href="#nexsql-commands"><span class="octicon octicon-link"></span></a>NexSQL Commands</h3>
+
+<ul>
+<li>!db <a>optional:table</a>- Wipe's the database or table clean.
+!db wipe testTbl (Would completely clear all rows from the table "testTbl")
+!db wipe (Would completely clear all rows from all tables)</li>
+<li>!db 
+!db new Players id(int),Username(string),Password(string) (Creates a new table "Players")
+!db add Players 1,TestUsr,TestPwd123 (Adds a new row within the table "Players")
+!db del Players Players 1 (Deletes a specific row from "Players" using only the ID specified)</li>
+</ul>
         </section>
 
         <aside id="sidebar">
