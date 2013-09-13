@@ -38,28 +38,51 @@
 
 <ul>
 <li>You can download the Nex Package which contains all of the Nex plugins by clicking "Download .zip file" or "Download .tar.gz file" on the right</li>
+<li>PermissionsEx on bukkit</li>
 <li>Latest version of <a href="#">Nex</a> (Nex without any of its associated plugins)</li>
 <li>
 <a href="#">SQLite</a> and optionally <a href="#">SQLite Browser</a> for viewing and editing the DB file.</li>
 </ul><h3>
+<a name="how-it-works" class="anchor" href="#how-it-works"><span class="octicon octicon-link"></span></a>How It Works</h3>
+
+<p>Nex acts as the core for the plugin(s), and has NexSQL built-in so it can do things like adding new entries and deleting entries from the DB. It is also what handles the commands for all of the plugins.</p>
+
+<h3>
 <a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How To Use</h3>
 
 <p>You aren't required to use all of the Nex plugins, but they work best together. To use any of the Nex plugins you need <a href="#">SQLite</a> since Nex uses an SQLite DB to store all needed data.</p>
 
 <ol>
-<li>Download whichever Nex plugins you want to use, and unless you're just using Nex Mechanics (Without Nex or any of its associates) you'll also need to download NexSQL to handle the SQLite db.</li>
+<li>Download whichever plugin(s) you want to use and also download the NexCore.</li>
 <li>Place your downloaded plugins and NexSQL into your /Plugins/ folder</li>
-<li>Run your server and Nex should automatically create a folder within your /Plugins/ folder, open it and edit the configuration file.</li>
+<li>Run your server and Nex should automatically create a folder within your /Plugins/ folder, open it and edit the NexCore configuration file and the configuration file for whichever plugin(s) you downloaded.</li>
 <li>Place the "server.db" file in /Plugins/Nex/ so it looks like "/Your_Server_Directory/Plugins/Nex/server.db"
 Your server should now be running successfully with Nex. To view and change data like sign shops, edit the "server.db" file.</li>
 </ol><h3>
+<a name="permissions" class="anchor" href="#permissions"><span class="octicon octicon-link"></span></a>Permissions</h3>
+
+<p><strong>NexCore</strong>
+Ban Command</p>
+
+<ul>
+<li>Nex.mb | Nex.hr | Nex.dy | Nex.wk
+Log Management</li>
+<li>Nex.xraylogs.view | Nex.xraylogs.clear</li>
+<li>Nex.stafflogs.view | Nex.stafflogs.clear</li>
+</ul><h3>
 <a name="nex-commands" class="anchor" href="#nex-commands"><span class="octicon octicon-link"></span></a>Nex Commands</h3>
 
-<h3>
-<a name="nexeco-commands" class="anchor" href="#nexeco-commands"><span class="octicon octicon-link"></span></a>NexEco Commands</h3>
+<p>*!
+!25mb testuser You're banned from the server for 25 minutes because you did not follow the rules.
+!3dy testuser You're banned from the server for 3 days because you did not follow the rules.
+!ban testuser You're permanently banned from the server because you did not follow the rules.
+!xraylogs  - View suspected x-ray users or clear out the x-ray logs from the DB.
+!stafflogs  - View suspected admin abusers or clear out the staff logs from the DB.</p>
 
 <h3>
 <a name="nexsql-commands" class="anchor" href="#nexsql-commands"><span class="octicon octicon-link"></span></a>NexSQL Commands</h3>
+
+<p>Note that NexSQL is built-in to the NexCore plugin.</p>
 
 <ul>
 <li>!db <a>optional:table</a>- Wipe's the database or table clean.
@@ -69,7 +92,15 @@ Your server should now be running successfully with Nex. To view and change data
 !db new Players id(int),Username(string),Password(string) (Creates a new table "Players")
 !db add Players 1,TestUsr,TestPwd123 (Adds a new row within the table "Players")
 !db del Players Players 1 (Deletes a specific row from "Players" using only the ID specified)</li>
-</ul>
+</ul><h3>
+<a name="nexeco-commands" class="anchor" href="#nexeco-commands"><span class="octicon octicon-link"></span></a>NexEco Commands</h3>
+
+<p>Will be added soon.</p>
+
+<h3>
+<a name="nexmechanics-commands" class="anchor" href="#nexmechanics-commands"><span class="octicon octicon-link"></span></a>NexMechanics Commands</h3>
+
+<p>Will be added soon.</p>
         </section>
 
         <aside id="sidebar">
