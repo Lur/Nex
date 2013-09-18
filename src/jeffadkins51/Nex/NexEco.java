@@ -35,7 +35,7 @@ public class NexEco extends JavaPlugin implements Listener {
 		Bukkit.getPluginManager().registerEvents(this, this);
 	}
 	
-	public static int getItemPrice(Material mat){
+	public static int getItemBaseValue(Material mat){
 		int result = 0;
 		try{
 			fis = new FileInputStream(Nex.dir + "eco\\item_values.ini");
@@ -50,12 +50,22 @@ public class NexEco extends JavaPlugin implements Listener {
 					result = Integer.parseInt(ln[1]);
 				}
 			}
-		} catch (IOException ioe) { System.err.println("Error: Could not read item values!"); }
+		} catch (IOException ioe) { System.err.println("Error: Could not read base item value!"); }
 		return result;
 	}
-	public static int getTaxPrice(Material mat){
-		
-		return 0;
+	public static int getItemValue(Material mat){
+		int result = 0;
+		try{
+			double tax = 0.0, total = getItemBaseValue(mat);
+			fis = new FileInputStream(Nex.dir + "eco\\tax.ini");
+			dis = new DataInputStream(fis);
+			br = new BufferedReader(new InputStreamReader(dis));
+			String[] ln;
+			if (br.readLine() != null){ ln = br.readLine().split("%"); tax = Double.parseDouble(ln[0]); }
+			float percent = (float) ((tax * 100)/total);
+			result = (int) (total - percent);
+		} catch (IOException ioe) { System.err.println("Eror: Could not read item value!"); }
+		return result;
 	}
 	
 	public static int getCash(Player p)
@@ -99,9 +109,13 @@ public class NexEco extends JavaPlugin implements Listener {
 
 	public static void purchaseItem(Player p, Material mat, int shopId, int amt)
 	{
-		if (cashInInventory >= getItemPrice(mat) + getTaxPrice(mat))
-		Stocks.demand[mat.getId()] = Stocks.demand[mat.getId()] + amt;
-		p.sendMessage(ChatColor.GREEN + "You have purchased " + amt + " of " + mat.toString() + ".");
+		if (cashInInventory >= getItemValue(mat))
+		{
+			Stocks.demand[mat.getId()] = Stocks.demand[mat.getId()] + amt;
+			p.sendMessage(ChatColor.GREEN + "[SHOP]: You have purchased (" + amt + ") of '" + mat.toString() + "'.");
+		} else {
+			p.sendMessage(ChatColor.RED + "[SHOP]: You don't have enough money to buy this item!");
+		}
 	}
 	
 	public static void sellItem(Player p, Material item, int shopId, int amt)
