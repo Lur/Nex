@@ -32,16 +32,15 @@ public class Stocks {
 		for (int i = 0; i < stocks.length; i++){
 			lnData = stocks[i].split(":");
 			mat = Material.getMaterial(lnData[0]);
-			stocks[mat.getId()] = mat.name() + ":" + "";
+			stocks[mat.getId()] = mat.name() + ":" + NexEco.getItemPrice(mat);
 		}
 	}
-	
-	//TODO: Load the values from the new SQLite DB.
+
 	public static void fetchValues()
 	{
 		try{
 			/** Base Values for Materials */
-			FileInputStream fis = new FileInputStream(NexEco.dir + "/NexEco/stockdata/base_item_values.dat");
+			FileInputStream fis = new FileInputStream(Nex.dir + "/NexEco/stockdata/base_item_values.dat");
 			DataInputStream dis = new DataInputStream(fis);
 			BufferedReader br = new BufferedReader(new InputStreamReader(dis));
 			String ln=null;

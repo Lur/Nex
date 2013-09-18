@@ -1,7 +1,10 @@
 package jeffadkins51;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -22,7 +25,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Nex extends JavaPlugin implements Listener {
 
 	public static String website;
-	
+	public static String s_key = "testServerKey123";
+	public static boolean nexEco_enabled=true,nexMechanics_enabled=true;
 	/**
 	 * Format:
 	 * PLAYER:BANTIME:TIMEOFBAN
@@ -44,13 +48,39 @@ public class Nex extends JavaPlugin implements Listener {
 			e.printStackTrace();
 		}
 		dir = new File(decodedPath);
-		//NexSQL.init();
+		loadConfig();
 	}
 	
 	public static void loadConfig()
 	{
-		
-		//if(ln.contains('website = ')){}
+		try {
+			FileInputStream fis = new FileInputStream(Nex.dir + "config.ini");
+			DataInputStream dis = new DataInputStream(fis);
+			BufferedReader br = new BufferedReader(new InputStreamReader(dis));
+			String ln;
+			String lnData[];
+			while ((ln = br.readLine())!=null){
+				if (ln.contains("s_key = "))
+				{
+					lnData = ln.split("= ");
+					s_key = lnData[1];
+				} else if (ln.contains("website = ")){
+					lnData = ln.split("= ");
+					website = lnData[1];
+				} else if (ln.contains("NexEco_Enabled = ")){
+					lnData = ln.split("= ");
+					nexEco_enabled = Boolean.parseBoolean(lnData[1]);
+				} else if (ln.contains("NexMechanics_Enabled = ")){
+					lnData = ln.split("= ");
+					nexMechanics_enabled = Boolean.parseBoolean(lnData[1]);
+				}
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -79,6 +109,7 @@ public class Nex extends JavaPlugin implements Listener {
 		}
 		return result;
 	}
+	
 	public static void sendQuery(String args[]){
 		BufferedReader bufferedReader;
 		String ln = args[0] + "&";

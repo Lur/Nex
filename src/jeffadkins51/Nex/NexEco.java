@@ -36,8 +36,22 @@ public class NexEco extends JavaPlugin implements Listener {
 	}
 	
 	public static int getItemPrice(Material mat){
-		
-		return 0;
+		int result = 0;
+		try{
+			fis = new FileInputStream(Nex.dir + "eco\\item_values.ini");
+			dis = new DataInputStream(fis);
+			br = new BufferedReader(new InputStreamReader(dis));
+			String[] ln;
+			while (br.readLine() != null)
+			{
+				if (br.readLine().contains(mat.toString())) {
+					ln = br.readLine().split(":");
+					/** TODO: Take into account Supply & Demand */
+					result = Integer.parseInt(ln[1]);
+				}
+			}
+		} catch (IOException ioe) { System.err.println("Error: Could not read item values!"); }
+		return result;
 	}
 	public static int getTaxPrice(Material mat){
 		
@@ -117,7 +131,6 @@ public class NexEco extends JavaPlugin implements Listener {
 				Sign sign = (Sign) b.getState();
 				String[] lines = sign.getLines();
 				if(lines[0].equalsIgnoreCase("[SHOP]") && !(lines[3] == null)) {
-					//p.sendMessage(ChatColor.GREEN + "Nex: Detected sign is a SHOP item and has a SHOP_KEY");
 						
 					//[SHOP]
 					//Description
